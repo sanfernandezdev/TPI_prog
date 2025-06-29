@@ -1,0 +1,149 @@
+# depslib dependency file v1.0
+1749212340 source:c:\users\mati\desktop\prog1 1c\got refactor\main.cpp
+	<iostream>
+
+1749213043 source:c:\users\mati\desktop\prog1 1c\got refactor\menues.cpp
+	<iostream>
+
+1750118132 source:c:\users\nahue\documents\utn\prog1\got refactor\main.cpp
+	<iostream>
+	"menues.h"
+	"sesionDeJuego.h"
+
+1749215454 c:\users\nahue\documents\utn\prog1\got refactor\menues.h
+
+1750130520 c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.h
+
+1749215452 c:\users\nahue\documents\utn\prog1\got refactor\menues.cpp
+	<iostream>
+
+1749215453 c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.cpp
+	<iostream>
+
+1749215452 source:c:\users\nahue\documents\utn\prog1\got refactor\menues.cpp
+	<iostream>
+
+1750130520 source:c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.cpp
+	<iostream>
+	"casas.cpp"
+
+1750130477 c:\users\nahue\documents\utn\prog1\got refactor\casas.cpp
+	<iostream>
+
+1750229133 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\main.cpp
+	<iostream>
+	"menues.h"
+	"sesionDeJuego.h"
+
+1750786867 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.h
+	"sesionDeJuego.h"
+	<vector>
+
+1750791232 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.h
+	<vector>
+	"admCasas.h"
+
+1750790901 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
+	<iostream>
+	"menues.h"
+	"indicesVectores.h"
+	"constantesJuego.h"
+	"admBatallas.h"
+
+1750639884 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
+	<iostream>
+
+1750791362 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.cpp
+	<iostream>
+	<vector>
+	<cstdlib>
+	<ctime>
+	"indicesVectores.h"
+	"constantesJuego.h"
+	"sesionDeJuego.h"
+	"menues.h"
+	"admCasas.h"
+
+1750783124 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.h
+
+1750223008 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.h
+	<string>
+
+1750639711 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.cpp
+	<iostream>
+	<vector>
+	<limits>
+	<iomanip>
+	"sesionDeJuego.h"
+	"admCasas.h"
+	"admBatallas.h"
+	"menues.h"
+	"indicesVectores.h"
+	"constantesJuego.h"
+
+1750203804 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
+	<iostream>
+
+1750720076 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\indicesvectores.h
+
+1750788054 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\constantesjuego.h
+
+1751180825 source:c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.cpp
+	<iostream>
+	<vector>
+	<cstdlib>
+	<ctime>
+	"indicesVectores.h"
+	"constantesJuego.h"
+	"sesionDeJuego.h"
+	"menues.h"
+	"admCasas.h"
+
+1751178603 c:\users\usuario\desktop\juegoutnprog1-main\indicesvectores.h
+
+1751168930 c:\users\usuario\desktop\juegoutnprog1-main\constantesjuego.h
+
+1750791498 c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.h
+	<vector>
+	"admCasas.h"
+
+1751170140 c:\users\usuario\desktop\juegoutnprog1-main\admcasas.h
+	<string>
+
+1751179175 c:\users\usuario\desktop\juegoutnprog1-main\menues.h
+	"sesionDeJuego.h"
+	<vector>
+
+1751176852 source:c:\users\usuario\desktop\juegoutnprog1-main\admcasas.cpp
+	<iostream>
+	"constantesJuego.h"
+
+1751178635 source:c:\users\usuario\desktop\juegoutnprog1-main\main.cpp
+	<iostream>
+	"menues.h"
+	"sesionDeJuego.h"
+	"indicesVectores.h"
+
+1751180993 source:c:\users\usuario\desktop\juegoutnprog1-main\menues.cpp
+	<iostream>
+	<conio.h>
+	"menues.h"
+	"indicesVectores.h"
+	"constantesJuego.h"
+	"admBatallas.h"
+	"admCasas.h"
+
+1751180825 c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.h
+
+1751179128 source:c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.cpp
+	<iostream>
+	<vector>
+	<limits>
+	<iomanip>
+	"sesionDeJuego.h"
+	"admCasas.h"
+	"admBatallas.h"
+	"menues.h"
+	"indicesVectores.h"
+	"constantesJuego.h"
+
