@@ -124,7 +124,7 @@
 	"sesionDeJuego.h"
 	"indicesVectores.h"
 
-1751256923 source:c:\users\usuario\desktop\juegoutnprog1-main\menues.cpp
+1751257935 source:c:\users\usuario\desktop\juegoutnprog1-main\menues.cpp
 	<iostream>
 	<conio.h>
 	"menues.h"
@@ -133,9 +133,9 @@
 	"admBatallas.h"
 	"admCasas.h"
 
-1751256492 c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.h
+1751285874 c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.h
 
-1751256922 source:c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.cpp
+1751257935 source:c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.cpp
 	<iostream>
 	<vector>
 	<limits>
