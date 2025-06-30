@@ -26,7 +26,10 @@ void setRecursosInicialesJugador(int numCasaElegida, std::vector<float>& v_recur
     v_recursosJugador[comida_x_batallon] = getCostoComidaxBatallonSegunCasa(numCasaElegida);
 }
 
-
+void evaluarPartida(int estadisticas[], bool& perdiste, bool& ganaste){
+        perdiste = estadisticas[cantidad_rondas_perdidas]>=4;
+        ganaste = estadisticas[cantidad_rondas_ganadas] >= 3;//cambiar
+}
 
 void inicioDeJuego(int estadisticas[], int casaElegida) {
 
@@ -42,12 +45,16 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
     // menu principal
     cout << "CASA SELECCIONADA: " << getNombreCasaSeleccionada(casaElegida)<<endl;
     system("pause");
-    while(true) {
+    bool perdiste=false;
+    bool ganaste=false;
+    while(!perdiste && !ganaste) { //mientras Perdiste==false
         mostrarMenuPrincipal(casaElegida, recursosJugador, rondaActual);
         cin >> cin_opcion_menu;
         switch(cin_opcion_menu) {
             case idx_opcion_menu_batalla:
                 menuBatalla(casaElegida, recursosJugador, rondaActual, estadisticas);
+                system("pause");
+                evaluarPartida(estadisticas, perdiste, ganaste);
                 break;
             case idx_opcion_menu_tienda:
                 menuTienda(recursosJugador, casaElegida, estadisticas);
@@ -56,7 +63,12 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
                 return;
         }
     }
+    if(ganaste){
+        cout << "Ganaste el juego." << endl;
+        system("pause");
+    }
+    if(perdiste){
+        cout << "Perdiste el juego." << endl;
+        system("pause");
+    }
 }
-
-//crear funcion que reciba la cantidad de rondas ganadas/perdidas,
-

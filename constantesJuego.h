@@ -29,9 +29,9 @@
     const int id_targaryen = 3;
 
     // tienda
-    const int articulo_soldados= 1000;
+    const int articulo_soldados= 10000;
     const int articulo_comida = 10000; // UNIDADES DE COMIDA
-    const int valor_x_comida = 500;
+    const int valor_x_comida = 5000; //Costo de alimentar cada batallón
 
     const int idx_opcion_tienda_soldados = 1;
     const int idx_opcion_tienda_comida = 2;

@@ -18,7 +18,6 @@ int seleccionDeCasa(){
     cout << "1- LANNISTER " <<endl;
     cout << "2- STARK     " <<endl;
     cout << "3- TARGARYEN"<<endl;
-    cout << "4- BARATHEON " <<endl;
     cout << "---------------------------------------"               << endl;
     cin>>opcion;
     return opcion;
@@ -27,16 +26,14 @@ int seleccionDeCasa(){
 void mostrarEstadisticas(int estadisticas[], int tam){
     system("cls");
     cout << "---------------------------------------"               << endl;
-    cout <<"Estadisticas de la ultima partida: "<<endl;
+    cout <<"Estadisticas:"<<endl;
     cout << "---------------------------------------"               << endl;
-    cout<<" batalla_cantidad_victorias ="<<estadisticas[batalla_cantidad_victorias]<<endl;
-    cout<<" batalla_cantidad_derrotas  ="<<estadisticas[batalla_cantidad_derrotas]<<endl;
-    cout<<" total_gastado_oro          ="<<estadisticas[total_ganado_oro]<<endl;
-    cout<<" total_gastado_comida       ="<<estadisticas[total_gastado_comida]<<endl;
-    cout<<" total_gastado_soldados     ="<<estadisticas[total_ganado_soldados]<<endl;
-    cout<<" total_ganado_oro           ="<<estadisticas[total_ganado_oro]<<endl;
-    cout<<" total_ganado_comida        ="<<estadisticas[total_ganado_oro]<<endl;
-    cout<<" total_ganado_soldados      ="<<estadisticas[total_ganado_soldados]<<endl;
+    cout<<" Cantidad de victorias ="<<estadisticas[cantidad_rondas_ganadas]<<endl;
+    cout<<" Cantidad de derrotas ="<<estadisticas[cantidad_rondas_perdidas]<<endl;
+    cout<<" Total de oro gastado ="<<estadisticas[total_gastado_oro]<<endl;
+    cout<<" Total de comida gastada ="<<estadisticas[total_gastado_comida]<<endl;
+    cout<<" Total de oro ganado ="<<estadisticas[total_ganado_oro]<<endl;
+    cout<<" Total de soldados comprados ="<<estadisticas[total_ganado_soldados]<<endl;
     cout << "---------------------------------------"  << endl;
 }
 
@@ -79,7 +76,7 @@ void mostrarMensajePostBatalla(bool resultado){
     }else{
         cout << "Perdiste la ronda!" << endl;
     }
-} // a definir
+}
 
 void mostrarRecursosPreBatalla(const std::vector<float>& recursosJugador) {
     cout << "Soldados: " << recursosJugador[soldados] << endl;
@@ -104,8 +101,8 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rond
     } else {
         system("cls");
         // LOGICA DE BATALLA
-        bool resultadoBatalla;
-        resultadoBatalla= iniciarBatalla(rondaActual, recursosJugador, casaElegida, estadisticas);
+        bool resultadoBatalla=false;
+        iniciarBatalla(rondaActual, recursosJugador, casaElegida, estadisticas, resultadoBatalla);
         mostrarMensajePostBatalla(resultadoBatalla);
     }
 }
@@ -113,7 +110,7 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rond
 void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadisticas[]) {
 
     const float articulo_mejora_activa = getArticuloMejoraHabilidadActivaSegunCasa(casaElegida);
-    const float valor_x_articulo_soldado = getValorSoldadoSegunCasa(casaElegida) * articulo_soldados;
+    const float valor_x_articulo_soldado = getValorSoldadoSegunCasa(casaElegida)*articulo_soldados;
     const int valor_x_mejora_activa = getCostoMejorarHabilidadActivaSegunCasa(casaElegida);
 
     int cin_opcion_tienda = 0;
@@ -139,7 +136,8 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 if (recursosJugador[oro] >= valor_x_articulo_soldado) {
                     recursosJugador[soldados] += articulo_soldados;
                     recursosJugador[oro] -= valor_x_articulo_soldado;
-                    estadisticas[total_gastado_oro] += valor_x_articulo_soldado;
+                    estadisticas[total_gastado_oro] += valor_x_articulo_soldado; //Acum. oro gastado
+                    estadisticas[total_ganado_soldados]+= articulo_soldados;
                 } else {
                     cout << "No tienes oro suficiente!" << endl;
                     system("pause");
@@ -149,7 +147,7 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 if (recursosJugador[oro] >= valor_x_comida) {
                     recursosJugador[comida] += articulo_comida;
                     recursosJugador[oro] -= valor_x_comida;
-                    estadisticas[total_gastado_comida] += valor_x_comida;
+                    estadisticas[total_gastado_oro] += valor_x_comida; //Acum. oro gastado
                 } else {
                     cout << "No tienes oro suficiente!" << endl;
                     system("pause");
@@ -159,6 +157,7 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 if (recursosJugador[oro] >= valor_x_mejora_activa) {
                     recursosJugador[chance_hab_activa] += articulo_mejora_activa;
                     recursosJugador[oro] -= valor_x_mejora_activa;
+                    estadisticas[total_gastado_oro] += valor_x_mejora_activa; //Acum. oro gastado
                 } else {
                     cout << "No tienes oro suficiente!" << endl;
                     system("pause");
@@ -166,5 +165,6 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 break;
             case idx_opcion_tienda_volver:
                 break;
-        }}
+        }
     }
+}

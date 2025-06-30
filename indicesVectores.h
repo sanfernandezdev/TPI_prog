@@ -2,17 +2,15 @@
 #define INDICESVECTORES_H_INCLUDED
 
 /// ESTADISTICAS
-const int largo_vector_estadisticas = 10;
-const int batalla_cantidad_victorias = 0;
-const int batalla_cantidad_derrotas = 1;
-const int total_gastado_oro = 2;
-const int total_gastado_comida = 3;
-const int total_gastado_soldados = 4;
-const int total_ganado_oro = 5;
-const int total_ganado_comida = 6;
-const int total_ganado_soldados = 7;
-const int cantidad_rondas_ganadas = 8;
-const int cantidad_rondas_perdidas = 9;
+const int largo_vector_estadisticas = 8;
+const int total_gastado_oro = 0;
+const int total_gastado_comida = 1;
+const int total_gastado_soldados = 2;
+const int total_ganado_oro = 3;
+const int total_ganado_comida = 4;
+const int total_ganado_soldados = 5;
+const int cantidad_rondas_ganadas = 6;
+const int cantidad_rondas_perdidas = 7;
 
 /// indices del vector recursos
 const int largo_vector_recursos = 6; // cantidad de datos a guardar en el vector

@@ -16,8 +16,7 @@ const int v_costo_batallon_segun_casa[cant_casas_en_juego] = {10000, 8500, 12500
 
 const float v_costo_comida_batallon_segun_casa[cant_casas_en_juego] = {5000,5000,5000};
 
-//const float v_chanceHabActiva_segun_casa[cant_casas_en_juego] = {0.15, 0.3 ,0.1};
-const float v_chanceHabActiva_segun_casa[cant_casas_en_juego] = {1, 1, 1};
+const float v_chanceHabActiva_segun_casa[cant_casas_en_juego] = {0.15, 0.3 ,0.1};
 
 const int v_costos_mejorar_habilidad_activa_segun_casa[cant_casas_en_juego] = {10000, 8500, 25000};
 
@@ -54,21 +53,29 @@ string getNombreCasaSeleccionada(int numCasaElegida){
 void printHabilidadesSegunCasa(int numCasaElegida){
     switch(numCasaElegida){
         case id_lannister:
-            cout << "Pasiva: Tras cada batalla recuperan un 50%" << endl;
+            cout << "---------------------------------------" << endl;
+            cout << "Pasiva: Tras cada batalla recuperas un +50%" << endl;
             cout << "del oro correspondiente a los soldados caidos durante la batalla." << endl;
             cout << "---------------------------------------" << endl;
-            break;
-       /* case id_lannister:
-            cout << "Pasiva: Tras cada batalla recuperan un 50%" << endl;
-            cout << "del oro correspondiente a los soldados caidos durante la batalla." << endl;
+            cout << "Activa: Obtenes +30% de oro al ganar la batalla" << endl;
             cout << "---------------------------------------" << endl;
             break;
-        case id_lannister:
-            cout << "Pasiva: Tras cada batalla recuperan un 50%" << endl;
-            cout << "del oro correspondiente a los soldados caidos durante la batalla." << endl;
+        case id_stark:
+            cout << "---------------------------------------" << endl;
+            cout << "Pasiva: El porcentaje de tropas perdidas en" << endl;
+            cout << "cada batalla se reduce un (nro de ronda*1%)." << endl;
+            cout << "---------------------------------------" << endl;
+            cout << "Activa: Tropas rinden un 20% menos en combate." << endl;
             cout << "---------------------------------------" << endl;
             break;
-*/
+        case id_targaryen:
+            cout << "---------------------------------------" << endl;
+            cout << "Pasiva: Tus tropas son +35%  efectivas." << endl;
+            cout << "---------------------------------------" << endl;
+            cout << "Activa: Invocar Dragon (Automaticamente ganas" << endl;
+            cout << "la batalla pero quema un 20% de las tropas enviadas)." << endl;
+            cout << "---------------------------------------" << endl;
+            break;
     }
 }
 

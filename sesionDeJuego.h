@@ -4,6 +4,7 @@
 #include "admCasas.h"
 
 
+void evaluarPartida(int estadisticas[], bool& perdiste, bool& ganaste);
 void inicioDeJuego(int estadisticas[], int casaElegida);
 // funciones relacionadas al inicio del juego ----------
 void setRecursosInicialesSegunCasaElegida(int numCasa);

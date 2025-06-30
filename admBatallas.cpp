@@ -19,30 +19,19 @@ float getChanceGanarSegunRonda(int rondaActual) {
     return v_chances_ganar_ronda[rondaActual-1];
 }
 
-float getCostoComidaPorSoldado(float costoPorBatallon, int soldadosPorBatallon){
-    return costoPorBatallon / soldadosPorBatallon;
-}
-
 int getComidaGastadaRonda(int cantSoldados, std::vector<float>& recursosJugador, int casaElegida){
-     float costo_alimentar_soldado = getCostoComidaPorSoldado(getCostoComidaxBatallonSegunCasa(casaElegida), soldados_x_batallon);
-     int auxResult =cantSoldados / costo_alimentar_soldado;
-     cout << "En esta batalla gastas "  << auxResult <<" comida alimentar a tus soldados. "<< endl;
-     return auxResult;
-}
+     cout << "En esta batalla gastas "  << cantSoldados <<" comida alimentar a tus soldados. "<< endl;
 
-int getTotalPuedeAlimentar(const std::vector<float> recursosJugador){
-    int casaElegida = getNumCasaElegida(recursosJugador);
-    float costo_alimentar_soldado = getCostoComidaPorSoldado(getCostoComidaxBatallonSegunCasa(casaElegida), soldados_x_batallon); // distinto segun cada casa
-    return static_cast<int>(recursosJugador[comida] * costo_alimentar_soldado);
+     return cantSoldados;
 }
 
 int getTropasListas(const std::vector<float> recursosJugador){
-    int soldadosComprados =  static_cast<int>(recursosJugador[soldados]);
-    int puedeAlimentar = getTotalPuedeAlimentar(recursosJugador);
-    if (soldadosComprados < puedeAlimentar) {
-        return soldadosComprados;
+    int soldadosDisponibles =  static_cast<int>(recursosJugador[soldados]);
+    int comidaDisponible = static_cast<int>(recursosJugador[comida]);
+    if (soldadosDisponibles <= comidaDisponible) {
+        return soldadosDisponibles;
     } else {
-        return puedeAlimentar;
+        return comidaDisponible;
     }
 }
 
@@ -89,12 +78,13 @@ int getTropasCaidas(int rondaActual, int combatientes_reales){
     return static_cast<int>(auxResult);
 }
 
-void ejecutarPasiva(std::vector<float>& recursosJugador, int rondaActual, int casaElegida, int& tropasCaidas, int& tropasListas, int& tropasAdicionales){
+void ejecutarPasiva(std::vector<float>& recursosJugador, int rondaActual, int casaElegida, int& tropasCaidas, int& tropasListas, int& tropasAdicionales, int estadisticas[]){
     switch (casaElegida) {
         case id_lannister :{
             // Tras cada batalla recuperan un 50% del oro correspondiente a los soldados caídos durante la batalla.
             float oro_a_recuperar = getValorSoldadoSegunCasa(casaElegida) * tropasCaidas * 0.5;
             recursosJugador[oro] += oro_a_recuperar;
+            estadisticas[total_ganado_oro] += oro_a_recuperar;
             cout << "Gracias a tu habilidad pasiva recuperas "  << oro_a_recuperar << " de oro por el 50% del costo de " << tropasCaidas << " soldados caidos en batalla. (costo por soldado "
             << getValorSoldadoSegunCasa(casaElegida) <<")."<< endl;
         break;
@@ -121,10 +111,10 @@ void ejecutarPasiva(std::vector<float>& recursosJugador, int rondaActual, int ca
 
 
 // cada batalla resta tropas, resta comida, ganas o perdes la batalla en si, y suma oro si ganas
-bool iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int casaElegida, int estadisticas[]) {
+void iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int casaElegida, int estadisticas[], bool& rondaGanada) {
     // si la ronda no se pasa del limite de rondas (ejecuta hasta la ultima inclusive)
-    if (rondaActual <= maxRondas){
-        bool rondaGanada = false;
+    if (rondaActual <= maxRondas && recursosJugador[soldados]>0){
+        rondaGanada=false;
         // incremento ronda y muestro mensaje con num de batalla
         rondaActual++;
         int oroAGanar=10000+(rondaActual*5000);
@@ -144,36 +134,47 @@ bool iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int c
         // calculo comida a gastar, muestro y resto
         int auxComidaGastadaRonda = getComidaGastadaRonda(auxTropasListasRonda, recursosJugador, casaElegida);
         recursosJugador[comida] -= auxComidaGastadaRonda;
-        cout << "En la batalla pierdes " << auxComidaGastadaRonda << " comida." <<endl;
-
+        estadisticas[total_gastado_comida]+=auxComidaGastadaRonda; //Acumulador comida gastada
         // habilidad pasiva siempre se ejecuta
-        ejecutarPasiva(recursosJugador, rondaActual, casaElegida, auxTropasCaidasRonda, auxTropasListasRonda, tropasAdicionales);
+        ejecutarPasiva(recursosJugador, rondaActual, casaElegida, auxTropasCaidasRonda, auxTropasListasRonda, tropasAdicionales, estadisticas);
 
          // habilidad activa ejecuta si se activa segun porcentaje
         if (seActivoChanceHab(recursosJugador[chance_hab_activa])) {
-            cout << "Activa: " << endl;
+            //cout << "Activa: " << endl;
             ejecutarActiva(recursosJugador, rondaGanada, oroAGanar, auxTropasListasRonda);
         }
         auxTropasListasRonda+=tropasAdicionales;
 
-        if (rondaGanada){
+        if (rondaGanada){ // Ganas por el dragon
+            cout << "Se activo tu habilidad. Ganas la partida automaticamente!" << endl;
             estadisticas[cantidad_rondas_ganadas]++;
             recursosJugador[oro]+= oroAGanar;
-            return true;
+            estadisticas[total_ganado_oro]+=oroAGanar;
+            return;
         } else {
             //no ganaste todavia, se debe evaluar y en base a eso
             float chancesDeGanar = sumarChancesSegunSoldados(auxTropasListasRonda) + getChanceGanarSegunRonda(rondaActual);
             if (seGanoRonda(chancesDeGanar)) {
+                rondaGanada=true;
                 estadisticas[cantidad_rondas_ganadas]++;
                 recursosJugador[oro]+= oroAGanar;
-                return true;
+                estadisticas[total_ganado_oro]+=oroAGanar;
+                return;
 
             } else { // perdiste la ronda
                 // sumarle 1 a batallas perdidas en estadisticas
+                rondaGanada=false;
+                estadisticas[cantidad_rondas_perdidas]++;
+                return;
             }
         system("pause");
-        return false;
+        return;
         }
+    }else if(recursosJugador[soldados]<=0){
+        cout << "No puedes luchas sin soldados" << endl;
+
+        system("pause");
+        return;
     }
 }
 

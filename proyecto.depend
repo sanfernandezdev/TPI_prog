@@ -88,7 +88,7 @@
 
 1750788054 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\constantesjuego.h
 
-1751180825 source:c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.cpp
+1751257167 source:c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.cpp
 	<iostream>
 	<vector>
 	<cstdlib>
@@ -99,11 +99,11 @@
 	"menues.h"
 	"admCasas.h"
 
-1751178603 c:\users\usuario\desktop\juegoutnprog1-main\indicesvectores.h
+1751257935 c:\users\usuario\desktop\juegoutnprog1-main\indicesvectores.h
 
-1751168930 c:\users\usuario\desktop\juegoutnprog1-main\constantesjuego.h
+1751235078 c:\users\usuario\desktop\juegoutnprog1-main\constantesjuego.h
 
-1750791498 c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.h
+1751241020 c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.h
 	<vector>
 	"admCasas.h"
 
@@ -114,7 +114,7 @@
 	"sesionDeJuego.h"
 	<vector>
 
-1751176852 source:c:\users\usuario\desktop\juegoutnprog1-main\admcasas.cpp
+1751256342 source:c:\users\usuario\desktop\juegoutnprog1-main\admcasas.cpp
 	<iostream>
 	"constantesJuego.h"
 
@@ -124,7 +124,7 @@
 	"sesionDeJuego.h"
 	"indicesVectores.h"
 
-1751180993 source:c:\users\usuario\desktop\juegoutnprog1-main\menues.cpp
+1751256923 source:c:\users\usuario\desktop\juegoutnprog1-main\menues.cpp
 	<iostream>
 	<conio.h>
 	"menues.h"
@@ -133,9 +133,9 @@
 	"admBatallas.h"
 	"admCasas.h"
 
-1751180825 c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.h
+1751256492 c:\users\usuario\desktop\juegoutnprog1-main\admbatallas.h
 
-1751179128 source:c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.cpp
+1751256922 source:c:\users\usuario\desktop\juegoutnprog1-main\sesiondejuego.cpp
 	<iostream>
 	<vector>
 	<limits>
